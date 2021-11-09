@@ -1,10 +1,23 @@
 import React from 'react'
-import { Route, Switch } from 'react-router';
-import { Navbar } from 'reactstrap';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
+import { Navbar } from './components/NavBar';
+import Home from './pages/Home';
+import '../src/styles/App.css'
 
 const App = ({dispatch}) => {
   return(
-    <>work</>
+    <>
+      <Router>
+        <Navbar/>
+          <Switch>
+            <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
+    </>
   )
 }
 
