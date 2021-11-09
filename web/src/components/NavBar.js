@@ -10,7 +10,7 @@ export const Navbar = () => {
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo'>
             HorseGame
-            <i class='fab fa-typo3' />
+            <i className='fab fa-typo3' />
           </Link>
           <ul className={'nav-menu'}>
             <li className='nav-item'>
