@@ -20,10 +20,10 @@ export const Navbar = () => {
             </li>
             <li>
             <Link
-                to='/aboutus'
+                to='/game'
                 className='nav-links'
               >
-                About Us
+                Game
               </Link>
             </li>
           </ul>

@@ -7,6 +7,7 @@ import {
 import { Navbar } from './components/NavBar';
 import Home from './pages/Home';
 import '../src/styles/App.css'
+import Footer from './components/Footer';
 
 const App = ({dispatch}) => {
   return(
@@ -16,6 +17,7 @@ const App = ({dispatch}) => {
           <Switch>
             <Route exact path="/" component={Home} />
         </Switch>
+        <Footer/>
       </Router>
     </>
   )
