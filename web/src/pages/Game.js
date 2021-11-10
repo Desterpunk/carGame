@@ -2,11 +2,11 @@ import React from 'react';
 import GameForm from '../components/GameForm';
 
 
-const Game = () => {
+const Game = ({dispatch}) => {
 
     return (
         <div className="containerGame">
-            <GameForm />
+            <GameForm dispatch={dispatch}/>
         </div>
     );
 }

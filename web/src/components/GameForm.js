@@ -1,16 +1,30 @@
 import React, {useState} from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { createGame } from "../actions/gameActions";
 
 import '../styles/GameForm.css'
 
-const GameForm = () => {
+const GameForm = (dispatch) => {
+
+    
+
+    const handleSubmit = () => {
+        let userConfig = {
+            numPlayers : numPlayers,
+            longitud : longitud
+        }
+
+    }
+
+    console.log(dispatch)
+
     const [numPlayers, setNumPlayers] =useState([]);
     const [longitud, setLongitud] =useState([]);
 
-    console.log(numPlayers, longitud);
     return (
         <>
-        <form className="containerFormGame">
+        <form className="containerFormGame" onSubmit={handleSubmit}>
             <h2 className="title">Crear Juego</h2>
             <div className="containerCreatePlayer">
                 <input
@@ -34,7 +48,7 @@ const GameForm = () => {
                     }}>
                 </input>
                 <br/><br/>
-                <button type="submit" className="btn-link text-regular">Crear</button>
+                <button type="submit" className="btn-link text-regular" >Crear</button>
                 <br/><br/>
                 <Link to={"/games"}><button className="btn-link text-regular">Juegos</button></Link>
             </div>
@@ -42,4 +56,11 @@ const GameForm = () => {
         </>
     );
 }
-export default GameForm;
+
+const mapStateToProps = state => ({
+    loading: state.game.loading,
+    redirect: state.game.redirect,
+    hasErrors: state.game.hasErrors,
+})
+
+export default connect(mapStateToProps)(GameForm);

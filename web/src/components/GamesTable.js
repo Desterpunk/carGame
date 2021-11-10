@@ -25,7 +25,7 @@ const GamesTable = () => {
                         <td>id</td>
                         <td>player</td>
                         <td>km</td>
-                        <td> <Link to={"/gamerunning"}> <button className="ButtonRun">Iniciar</button> </Link> </td>
+                        <td> <Link to={"/players"}> <button className="ButtonRun">Iniciar</button> </Link> </td>
                         <td><button className="ButtonDelete">Eliminar</button></td>
                     </tr>
                 </tbody>

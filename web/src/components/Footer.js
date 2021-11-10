@@ -2,7 +2,7 @@ import React from "react";
 
 import '../styles/Footer.css'
 
-import { AiFillGithub,AiFillYoutube } from 'react-icons/ai';
+import { AiFillGithub } from 'react-icons/ai';
 
   
 const Footer = () => {
@@ -20,7 +20,7 @@ const Footer = () => {
                       <li className="list-inline-item"><a href="/game">Game Config</a></li>
                       <li className="list-inline-item"><a href="/games">Games</a></li>
                   </ul>
-                  <p className="copyright">Company Name © 2021</p>
+                  <p className="copyright">Sofkau © 2021</p>
               </footer>
           </div>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
