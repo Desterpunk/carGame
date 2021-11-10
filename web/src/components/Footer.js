@@ -2,6 +2,8 @@ import React from "react";
 
 import '../styles/Footer.css'
 
+import { AiFillGithub,AiFillYoutube } from 'react-icons/ai';
+
   
 const Footer = () => {
   return (
@@ -9,10 +11,16 @@ const Footer = () => {
 
           <div className="footer-basic">
               <footer>
-                  <div className="social"><a href="/"><i className="icon ion-social-instagram"></i></a><a href="/"><i className="icon ion-social-snapchat"></i></a><a href="/"><i className="icon ion-social-twitter"></i></a><a href="/"><i className="icon ion-social-facebook"></i></a></div>
+                  <div className="social">
+                    <a href="/"><AiFillGithub  size="2em" color="white" /></a>
+                    <a href="/"><AiFillYoutube  size="2em" color="white" /></a>
+                    <a href="/"><AiFillGithub  size="2em" color="white" /></a>
+                    <a href="/"><AiFillYoutube  size="2em" color="white" /></a>
+                  </div>
                   <ul className="list-inline">
                       <li className="list-inline-item"><a href="/">Home</a></li>
-                      <li className="list-inline-item"><a href="/game">Game</a></li>
+                      <li className="list-inline-item"><a href="/game">Game Config</a></li>
+                      <li className="list-inline-item"><a href="/games">Games</a></li>
                   </ul>
                   <p className="copyright">Company Name © 2021</p>
               </footer>

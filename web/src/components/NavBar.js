@@ -23,7 +23,15 @@ export const Navbar = () => {
                 to='/game'
                 className='nav-links'
               >
-                Game
+                Game Config
+              </Link>
+            </li>
+            <li>
+            <Link
+                to='/games'
+                className='nav-links'
+              >
+                Games
               </Link>
             </li>
           </ul>

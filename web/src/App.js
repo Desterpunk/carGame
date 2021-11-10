@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import '../src/styles/App.css'
 import Footer from './components/Footer';
 import Game from './pages/Game';
+import Games from './pages/Games';
 
 const App = ({dispatch}) => {
   return(
@@ -18,6 +19,7 @@ const App = ({dispatch}) => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/game" component={Game} />
+            <Route exact path="/games" component={Games} />
         </Switch>
         <Footer/>
       </Router>

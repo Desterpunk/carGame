@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
+
+table {
+	text-align: center;
+	line-height: 40px;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 50px auto;
+	border-radius: .25rem;
+	padding: 35px;
+	background-color: rgba(27, 5, 102, 0.7);
+	width: 80%;
+	box-shadow: 5px 7px 30px 5px #000000;
+  margin-bottom: 110px;
+}
+
+thead tr .tittleTable {
+	border-bottom: 3px solid #000638;
+	color: #fff;
+}
+
+tbody tr:hover {
+	background-color: #030031;
+	cursor: default;
+}
+
+tbody td, tr {
+	color: #fff;
+  align-items: center;
+  border-spacing: 2em;
+	border-bottom: 1px solid #000638;
+	padding: 10px;
+  font-family: 'Reggae One', cursive;
+  font-size: 1.1em;
+}
+
+.ButtonDelete {
+    display: inline-block;
+    font-family: 'Reggae One', cursive;
+    font-size: 1em;
+    padding: 10px 27px;
+    border-radius: 100px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.781);
+    background: #310b0b;
+  }
+  
+  .ButtonDelete:hover,
+  .ButtonDelete.active {
+      color: rgba(255, 255, 255, 0.781);
+      background: #ff0000;
+  }
+
+  .ButtonRun {
+    display: inline-block;
+    font-family: 'Reggae One', cursive;
+    font-size: 1em;
+    padding: 10px 27px;
+    border-radius: 100px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.781);
+    background: #050e04;
+  }
+  
+  .ButtonRun:hover,
+  .ButtonRun.active {
+      color: rgba(255, 255, 255, 0.781);
+      background: #358510;
+  }
+
+  .GamesTittle{
+	padding-top: 0px;
+	color: rgb(255, 255, 255);
+	font-family: 'Reggae One', cursive;
+	font-size: 2em;
+  }

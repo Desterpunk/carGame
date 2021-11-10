@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 
 import '../styles/GameForm.css'
 
@@ -32,9 +33,10 @@ const GameForm = () => {
                         setLongitud({ longitud: event.target.value })
                     }}>
                 </input>
-                <br/>
-                <br/>
+                <br/><br/>
                 <button type="submit" className="btn-link text-regular">Crear</button>
+                <br/><br/>
+                <Link to={"/games"}><button className="btn-link text-regular">Juegos</button></Link>
             </div>
         </form>
         </>
