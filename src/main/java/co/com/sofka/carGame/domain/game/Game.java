@@ -1,6 +1,6 @@
 package co.com.sofka.carGame.domain.game;
 
-import co.com.sofka.carGame.domain.driver.values.HorsemanId;
+import co.com.sofka.carGame.domain.horseman.values.HorsemanId;
 import co.com.sofka.carGame.domain.generic.values.Status;
 import co.com.sofka.carGame.domain.game.entities.Podio;
 import co.com.sofka.carGame.domain.game.events.GameCreated;

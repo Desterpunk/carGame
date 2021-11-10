@@ -1,7 +1,6 @@
-package co.com.sofka.carGame.domain.driver.events;
+package co.com.sofka.carGame.domain.horseman.events;
 
-import co.com.sofka.carGame.domain.driver.values.DiceFace;
-import co.com.sofka.carGame.domain.driver.values.HorsemanId;
+import co.com.sofka.carGame.domain.horseman.values.DiceFace;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class DiceThrown extends DomainEvent {

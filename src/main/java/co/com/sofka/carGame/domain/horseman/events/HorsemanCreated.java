@@ -1,6 +1,6 @@
-package co.com.sofka.carGame.domain.driver.events;
+package co.com.sofka.carGame.domain.horseman.events;
 
-import co.com.sofka.carGame.domain.driver.values.*;
+import co.com.sofka.carGame.domain.horseman.values.*;
 import co.com.sofka.carGame.domain.generic.values.Status;
 import co.com.sofka.domain.generic.DomainEvent;
 

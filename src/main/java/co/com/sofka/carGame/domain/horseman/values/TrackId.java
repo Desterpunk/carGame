@@ -1,4 +1,4 @@
-package co.com.sofka.carGame.domain.driver.values;
+package co.com.sofka.carGame.domain.horseman.values;
 
 import co.com.sofka.domain.generic.Identity;
 

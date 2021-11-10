@@ -1,13 +1,13 @@
-package co.com.sofka.carGame.domain.driver;
+package co.com.sofka.carGame.domain.horseman;
 
-import co.com.sofka.carGame.domain.driver.entities.Horse;
-import co.com.sofka.carGame.domain.driver.entities.Line;
-import co.com.sofka.carGame.domain.driver.entities.Track;
-import co.com.sofka.carGame.domain.driver.events.DiceThrown;
-import co.com.sofka.carGame.domain.driver.events.HorsemanCreated;
-import co.com.sofka.carGame.domain.driver.events.HorsemanMoved;
-import co.com.sofka.carGame.domain.driver.events.RaceFinished;
-import co.com.sofka.carGame.domain.driver.values.*;
+import co.com.sofka.carGame.domain.horseman.entities.Horse;
+import co.com.sofka.carGame.domain.horseman.entities.Line;
+import co.com.sofka.carGame.domain.horseman.entities.Track;
+import co.com.sofka.carGame.domain.horseman.events.DiceThrown;
+import co.com.sofka.carGame.domain.horseman.events.HorsemanCreated;
+import co.com.sofka.carGame.domain.horseman.events.HorsemanMoved;
+import co.com.sofka.carGame.domain.horseman.events.RaceFinished;
+import co.com.sofka.carGame.domain.horseman.values.*;
 import co.com.sofka.carGame.domain.generic.values.Position;
 import co.com.sofka.carGame.domain.generic.values.Status;
 import co.com.sofka.domain.generic.AggregateEvent;

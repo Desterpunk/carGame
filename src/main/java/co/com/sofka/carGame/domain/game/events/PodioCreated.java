@@ -1,6 +1,6 @@
 package co.com.sofka.carGame.domain.game.events;
 
-import co.com.sofka.carGame.domain.driver.values.HorsemanId;
+import co.com.sofka.carGame.domain.horseman.values.HorsemanId;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class PodioCreated extends DomainEvent {

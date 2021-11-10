@@ -1,8 +1,8 @@
-package co.com.sofka.carGame.domain.driver.entities;
+package co.com.sofka.carGame.domain.horseman.entities;
 
-import co.com.sofka.carGame.domain.driver.values.HorseId;
-import co.com.sofka.carGame.domain.driver.values.Color;
-import co.com.sofka.carGame.domain.driver.values.Distance;
+import co.com.sofka.carGame.domain.horseman.values.HorseId;
+import co.com.sofka.carGame.domain.horseman.values.Color;
+import co.com.sofka.carGame.domain.horseman.values.Distance;
 import co.com.sofka.domain.generic.Entity;
 
 public class Horse extends Entity<HorseId> {

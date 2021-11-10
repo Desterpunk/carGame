@@ -1,7 +1,7 @@
-package co.com.sofka.carGame.domain.driver.entities;
+package co.com.sofka.carGame.domain.horseman.entities;
 
-import co.com.sofka.carGame.domain.driver.values.Location;
-import co.com.sofka.carGame.domain.driver.values.TrackId;
+import co.com.sofka.carGame.domain.horseman.values.Location;
+import co.com.sofka.carGame.domain.horseman.values.TrackId;
 import co.com.sofka.domain.generic.Entity;
 
 public class Track extends Entity<TrackId> {

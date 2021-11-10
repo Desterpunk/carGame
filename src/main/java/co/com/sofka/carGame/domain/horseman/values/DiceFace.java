@@ -1,13 +1,13 @@
-package co.com.sofka.carGame.domain.driver.values;
+package co.com.sofka.carGame.domain.horseman.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Color implements ValueObject<String> {
+public class DiceFace implements ValueObject<String> {
     private final String value;
 
-    public Color(String value) {
+    public DiceFace(String value) {
         this.value = value;
     }
 
@@ -20,8 +20,8 @@ public class Color implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Color color = (Color) o;
-        return Objects.equals(value, color.value);
+        DiceFace diceFace = (DiceFace) o;
+        return Objects.equals(value, diceFace.value);
     }
 
     @Override

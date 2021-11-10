@@ -1,18 +1,18 @@
-package co.com.sofka.carGame.domain.driver.values;
+package co.com.sofka.carGame.domain.horseman.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Distance implements ValueObject<Integer> {
-    private final Integer value;
+public class Nickname implements ValueObject<String> {
+    private final String value;
 
-    public Distance(Integer value) {
+    public Nickname(String value) {
         this.value = value;
     }
 
     @Override
-    public Integer value() {
+    public String value() {
         return value;
     }
 
@@ -20,8 +20,8 @@ public class Distance implements ValueObject<Integer> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Distance distance = (Distance) o;
-        return Objects.equals(value, distance.value);
+        Nickname nickname = (Nickname) o;
+        return Objects.equals(value, nickname.value);
     }
 
     @Override

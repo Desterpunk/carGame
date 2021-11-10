@@ -1,7 +1,7 @@
-package co.com.sofka.carGame.domain.driver.entities;
+package co.com.sofka.carGame.domain.horseman.entities;
 
-import co.com.sofka.carGame.domain.driver.values.Distance;
-import co.com.sofka.carGame.domain.driver.values.LineId;
+import co.com.sofka.carGame.domain.horseman.values.Distance;
+import co.com.sofka.carGame.domain.horseman.values.LineId;
 import co.com.sofka.domain.generic.Entity;
 
 public class Line extends Entity<LineId> {

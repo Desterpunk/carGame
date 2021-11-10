@@ -1,13 +1,13 @@
-package co.com.sofka.carGame.domain.driver.values;
+package co.com.sofka.carGame.domain.horseman.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Nickname implements ValueObject<String> {
+public class Color implements ValueObject<String> {
     private final String value;
 
-    public Nickname(String value) {
+    public Color(String value) {
         this.value = value;
     }
 
@@ -20,8 +20,8 @@ public class Nickname implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nickname nickname = (Nickname) o;
-        return Objects.equals(value, nickname.value);
+        Color color = (Color) o;
+        return Objects.equals(value, color.value);
     }
 
     @Override
