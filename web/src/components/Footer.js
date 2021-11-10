@@ -12,10 +12,8 @@ const Footer = () => {
           <div className="footer-basic">
               <footer>
                   <div className="social">
-                    <a href="/"><AiFillGithub  size="2em" color="white" /></a>
-                    <a href="/"><AiFillYoutube  size="2em" color="white" /></a>
-                    <a href="/"><AiFillGithub  size="2em" color="white" /></a>
-                    <a href="/"><AiFillYoutube  size="2em" color="white" /></a>
+                  <span>Jhon:</span><a href="https://github.com/Desterpunk"><AiFillGithub  size="2em" color="white" /></a>
+                  <span>Andres:</span><a href="https://github.com/Andres0x90"><AiFillGithub  size="2em" color="white" /></a>
                   </div>
                   <ul className="list-inline">
                       <li className="list-inline-item"><a href="/">Home</a></li>

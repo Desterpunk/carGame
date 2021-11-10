@@ -1,7 +1,7 @@
 .containerHeader ,
 .containerGame {
 	width: 100%;
-	height: 100vh;
+	height: 90vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -14,7 +14,7 @@
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
-	box-shadow: inset 0 0 100px 150px rgba(0,0,0,8);
+	box-shadow: inset 0 0 150px 150px rgba(0,0,0,8);
 }
 
 .textHeader {
@@ -31,7 +31,7 @@
 .textHeader .title-orange-neon, 
 .textHeader .icon {
 	margin-bottom: 0;
-	font-size: 60px;
+	font-size: 30px;
 	animation: orange-neon 2s infinite alternate;
 }
 
@@ -51,7 +51,7 @@
 
 .btn-link {
 	display: inline-block;
-	padding: 15px 30px;
+	padding: 15px 50px;
 	margin: 0 15px;
 	border: 6px dotted #d79e5b;
 	border-radius: 60px;
