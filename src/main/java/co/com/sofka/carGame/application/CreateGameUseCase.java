@@ -1,12 +1,10 @@
 package co.com.sofka.carGame.application;
 
 import co.com.sofka.business.generic.UseCase;
-import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.carGame.domain.game.Game;
 import co.com.sofka.carGame.domain.game.commands.CreateGameCommand;
-import co.com.sofka.carGame.domain.game.events.GameCreated;
 import co.com.sofka.carGame.domain.game.values.GameId;
 
 import co.com.sofka.carGame.domain.horseman.Horseman;
@@ -14,11 +12,13 @@ import co.com.sofka.carGame.domain.horseman.events.HorsemanCreated;
 import co.com.sofka.carGame.domain.horseman.values.*;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.google.common.collect.Streams;
+
+import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@ApplicationScoped
 public class CreateGameUseCase extends UseCase<RequestCommand<CreateGameCommand>,
         ResponseEvents>
 {
@@ -29,7 +29,7 @@ public class CreateGameUseCase extends UseCase<RequestCommand<CreateGameCommand>
         List<DomainEvent> events = new ArrayList<>();
         command.setEntityId(new GameId().value());
 
-       var game  = new Game(GameId.of(command.getEntityId()),Streams.zip(command.getNickanames().stream(), command.getHorseColors().stream(),
+       var game  = new Game(GameId.of(command.getEntityId()),Streams.zip(command.getNicknames().stream(), command.getHorseColors().stream(),
                 (nickname, horseColor)->
                 {
                     var horseman = new Horseman(new HorsemanId(), new Nickname(nickname),

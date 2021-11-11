@@ -1,23 +1,24 @@
 package co.com.sofka.carGame.domain.game.commands;
 
-import co.com.sofka.domain.generic.Command;
+
+import co.com.sofka.carGame.domain.generic.Command;
 
 import java.util.List;
 
 public class CreateGameCommand extends Command {
     private String entityId;
     private List<String> players;
-    private List<String> nickanames;
+    private List<String> nicknames;
     private List<String> horseColors;
     private Integer distance;
     private String place;
     private String country;
 
-    public CreateGameCommand(String entityId, List<String> players, List<String> nickanames,
+    public CreateGameCommand(String entityId, List<String> players, List<String> nicknames,
                              List<String> horseColors, Integer distance, String place, String country) {
         this.entityId = entityId;
         this.players = players;
-        this.nickanames = nickanames;
+        this.nicknames = nicknames;
         this.horseColors = horseColors;
         this.distance = distance;
         this.place = place;
@@ -40,12 +41,12 @@ public class CreateGameCommand extends Command {
         this.players = players;
     }
 
-    public List<String> getNickanames() {
-        return nickanames;
+    public List<String> getNicknames() {
+        return nicknames;
     }
 
-    public void setNickanames(List<String> nickanames) {
-        this.nickanames = nickanames;
+    public void setNicknames(List<String> nicknames) {
+        this.nicknames = nicknames;
     }
 
     public List<String> getHorseColors() {
