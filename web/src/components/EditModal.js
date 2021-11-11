@@ -1,19 +1,26 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { updatePlayer } from "../actions/playerActions";
 
 import '../styles/EditModal.css'
 
-function EditModal({ setOpenModal }) {
-  const [name, setName] =useState([]);
+function EditModal({dispatch, currentPlayer, setOpenModal,players,currentGame }) {
+  const [name, setName] = useState("");
 
-  const handleContinue = () => {
-    console.log(name)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(updatePlayer({
+      id: currentPlayer.index,
+      name: name,
+    }))
+    setOpenModal(false)
 
   }
 
   return (
     <div className="modalBackground">
       <div className="modalContainer">
-        <form>
+        <form onSubmit={handleSubmit}>
         <div className="titleCloseBtn">
           <button
             onClick={() => {
@@ -32,10 +39,11 @@ function EditModal({ setOpenModal }) {
                     type="text"
                     name="name"
                     required
+                    value={name}
                     placeholder="Nombre del jugador"
                     className="inputGame"
                     onChange={(event) => {
-                        setName({ name: event.target.value })
+                        setName(event.target.value)
                     }} >
                 </input>
         </div>
@@ -48,7 +56,7 @@ function EditModal({ setOpenModal }) {
           >
             Cancel
           </button>
-          <button type="submit" onClick={handleContinue}>Continue</button>
+          <button type="submit">Continue</button>
         </div>
         </form>
       </div>
@@ -56,4 +64,10 @@ function EditModal({ setOpenModal }) {
   );
 }
 
-export default EditModal;
+const mapStateToProps = state => ({
+  currentPlayer: state.player.currentPlayer,
+  players: state.player.players,
+  game: state.game.currentGame
+})
+
+export default connect(mapStateToProps)(EditModal);

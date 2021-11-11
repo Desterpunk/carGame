@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import { setPlayer } from '../actions/playerActions';
 
 import '../styles/GamesTable.css'
 import EditModal from './EditModal';
 
-const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame}) => {
+const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPlayer}) => {
     const [openModal, setOpenModal] = useState(false)
     const [currentPlayers, setCurrentPlayers] = useState([])
 
     useEffect(() => {
         if(currentGame !== null){
-            setCurrentPlayers(players.filter((player) => player.player.game - 1 === currentGame.index))
+            setCurrentPlayers(players.filter((player) => player.player.game  === currentGame.index))
         }
+
     }, [dispatch,currentGame,players])
+
+
+    const handleButton = (index) => {
+        dispatch(setPlayer(index))
+        setOpenModal(true);
+    }
+
+    
 
     const renderPlayers = () => {
 
@@ -23,10 +33,10 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame}) => {
 
         return currentPlayers.map((player,index) => 
             <tr key={Math.random()}>
-                <td>{index}</td>
+                <td>{player.player.id}</td>
                 <td>{player.player.name}</td>
                 <td>{player.player.game}</td>
-                <td><button className="ButtonDelete">Nombrar</button></td>
+                <td><button className="ButtonDelete" onClick={() => {handleButton(player.player.id)}}>Nombrar</button></td>
             </tr>
         )
         
@@ -63,7 +73,7 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame}) => {
             
         </div>
         )}
-            {openModal && <EditModal setOpenModal={setOpenModal}/>}
+            {openModal && <EditModal dispatch={dispatch} currentPlayer={currentGame} setOpenModal={setOpenModal}/>}
         </>
     );
 }
@@ -74,7 +84,8 @@ const mapStateToProps = state => ({
     hasErrors: state.player.hasErrors,
     games: state.game.games,
     players: state.player.players,
-    currentGame: state.game.currentGame
+    currentGame: state.game.currentGame,
+    currentPlayer: state.player.currentPlayer
 })
 
 

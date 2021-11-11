@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {  deleteGame, setGame } from '../actions/gameActions';
+import { deletePlayer } from '../actions/playerActions';
 
 import '../styles/GamesTable.css'
 
@@ -14,7 +15,10 @@ const GamesTable = ({dispatch,loading,hasErrors,games}) => {
     }
 
 
-
+    const handleDelete = (index) => {
+        dispatch(deleteGame(index))
+        dispatch(deletePlayer(index))
+    }
 
 
     const renderGames = () => {
@@ -26,11 +30,11 @@ const GamesTable = ({dispatch,loading,hasErrors,games}) => {
 
         return games.map((game,index) => 
             <tr key={Math.random()}>
-                <td>{index}</td>
+                <td>{game.game.id}</td>
                 <td>{game.game.numPlayers}</td>
                 <td>{game.game.distance}</td>
-                <td> <button onClick={() => handleInciar(index)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
-                <td><button onClick={() => dispatch(deleteGame(index))} className="ButtonDelete">Eliminar</button></td>
+                <td> <button onClick={() => handleInciar(game.game.id)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
+                <td><button onClick={() => handleDelete(index)} className="ButtonDelete">Eliminar</button></td>
             </tr>
         )
     }
