@@ -13,17 +13,17 @@ import Games from './pages/Games';
 import GameRunning from './pages/GameRunning';
 import Players from './pages/Players';
 
-const App = ({dispatch}) => {
+const App = () => {
   return(
     <>
       <Router>
         <Navbar/>
           <Switch>
-            <Route exact path="/" component={Home} dispatch={dispatch} />
-            <Route exact path="/game" component={Game} dispatch={dispatch} />
-            <Route exact path="/games" component={Games} dispatch={dispatch} />
-            <Route exact path="/gamerunning" component={GameRunning} dispatch={dispatch} />
-            <Route exact path="/players" component={Players} dispatch={dispatch} />
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/game" component={Game}/>
+            <Route exact path="/games" component={Games}/>
+            <Route exact path="/gamerunning" component={GameRunning}/>
+            <Route path="/players" component={Players}/>
         </Switch>
         <Footer/>
       </Router>

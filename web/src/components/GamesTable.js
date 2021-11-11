@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import {  deleteGame, setGame } from '../actions/gameActions';
 
 import '../styles/GamesTable.css'
 
-const GamesTable = () => {
+const GamesTable = ({dispatch,loading,hasErrors,games}) => {
+
+    const [totalPlayers, settotalPlayers] = useState(0)
+
+    const handleInciar = (index) => {
+        dispatch(setGame(index));
+    }
+
+
+
+    useEffect(() => {
+        var total = 0;
+        games.map((game) => {
+            total += parseInt(game.game.numPlayers);
+        })
+
+        settotalPlayers(total)
+    }, [dispatch,games])
+
+    console.log(totalPlayers)
+
+
+    const renderGames = () => {
+
+
+        if (loading) return <tr><td>Loading games...</td></tr>
+        if (hasErrors) return <tr><td>Loading games...</td></tr>
+
+
+        return games.map((game,index) => 
+            <tr key={Math.random()}>
+                <td>{game.game.id}</td>
+                <td>{game.game.numPlayers}</td>
+                <td>{game.game.distance}</td>
+                <td> <button onClick={() => handleInciar(index)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
+                <td><button onClick={() => dispatch(deleteGame(index))} className="ButtonDelete">Eliminar</button></td>
+            </tr>
+        )
+    }
 
     return (
         <div className="text-center ">
@@ -21,17 +61,21 @@ const GamesTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>id</td>
-                        <td>player</td>
-                        <td>km</td>
-                        <td> <Link to={"/players"}> <button className="ButtonRun">Iniciar</button> </Link> </td>
-                        <td><button className="ButtonDelete">Eliminar</button></td>
-                    </tr>
+                    {renderGames()}
                 </tbody>
             </table>
             <br/>
         </div>
     );
 }
-export default GamesTable;
+
+const mapStateToProps = state => ({
+    loading: state.game.loading,
+    redirect: state.game.redirect,
+    hasErrors: state.game.hasErrors,
+    games: state.game.games,
+    currentGame: state.game.currentGame,
+})
+
+
+export default connect(mapStateToProps)(GamesTable);

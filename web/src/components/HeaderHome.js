@@ -23,7 +23,7 @@ const HeaderHome = () => {
     
                 </p>
                 <br/>
-                <a href="/game" className="btn-link text-regular">Start</a>
+                <Link to={"/game"}><button className="btn-link text-regular">Start</button></Link>
             </div>
 	    </header>
     );
