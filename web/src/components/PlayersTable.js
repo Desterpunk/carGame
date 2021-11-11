@@ -1,31 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { createPlayer } from '../actions/playerActions';
 
 import '../styles/GamesTable.css'
 import EditModal from './EditModal';
 
-const PlayersTable = ({dispatch,games,currentGame, players,loading,hasErrors}) => {
+const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame}) => {
     const [openModal, setOpenModal] = useState(false)
+    const [currentPlayers, setCurrentPlayers] = useState([])
 
     useEffect(() => {
-        const actualPlayers = [];
-
-        if(currentGame !== null) {
-            const actualGame = games[currentGame.index]
-
-            for (let i = 0; i < actualGame.game.numPlayers; i++) {
-                actualPlayers.push({
-                    id: i,
-                    name: "username",
-                    actualGame: currentGame.index
-                })
-            }
-
-            dispatch(createPlayer(actualPlayers))
+        if(currentGame !== null){
+            setCurrentPlayers(players.filter((player) => player.player.game - 1 === currentGame.index))
         }
-    },[dispatch, currentGame,games])
+    }, [dispatch,currentGame,players])
 
     const renderPlayers = () => {
 
@@ -33,16 +21,15 @@ const PlayersTable = ({dispatch,games,currentGame, players,loading,hasErrors}) =
         if (loading) return <tr><td>Loading games...</td></tr>
         if (hasErrors) return <tr><td>Loading games...</td></tr>
 
-        if(players.player !== undefined){
-        return players.player.map((player,index) => 
+        return currentPlayers.map((player,index) => 
             <tr key={Math.random()}>
-                <td>{player.id}</td>
-                <td>{player.name}</td>
-                <td>{player.actualGame + 1}</td>
+                <td>{index}</td>
+                <td>{player.player.name}</td>
+                <td>{player.player.game}</td>
                 <td><button className="ButtonDelete">Nombrar</button></td>
             </tr>
         )
-        }
+        
     }
 
     return (
@@ -66,7 +53,6 @@ const PlayersTable = ({dispatch,games,currentGame, players,loading,hasErrors}) =
 
                     {renderPlayers()}
                 
-                    
                 </tbody>
                 
             </table>

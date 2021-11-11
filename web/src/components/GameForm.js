@@ -1,12 +1,38 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { createGame } from "../actions/gameActions";
+import { createPlayer } from "../actions/playerActions";
 
 import '../styles/GameForm.css'
 
-const GameForm = ({dispatch}) => {
+const GameForm = ({dispatch,games}) => {
 
+    const [totalPlayers, settotalPlayers] = useState(0)
+
+    useEffect(() => {
+        var total = 0;
+        games.map((game) => {
+            total += parseInt(game.game.numPlayers);
+            return null
+        })
+
+        settotalPlayers(total)
+    }, [dispatch,games])
+
+    useEffect(() => {
+
+        if(totalPlayers !== 0) {
+
+            for (let i = 0; i < totalPlayers; i++) {
+                createPlayer({
+                    id: i,
+                    name: "username",
+                    actualGame: null
+                })
+            }
+        }
+    },[dispatch, games, totalPlayers])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,6 +42,14 @@ const GameForm = ({dispatch}) => {
             numPlayers : numPlayers,
             distance : distance
         }))
+
+        for (let i = 0; i < numPlayers; i++) {
+                dispatch(createPlayer({
+                    id: "",
+                    name: "username",
+                    game: games.length+1,
+                }))
+        }
 
         setNumPlayers("");
         setDistance("");
@@ -66,6 +100,7 @@ const mapStateToProps = state => ({
     loading: state.game.loading,
     redirect: state.game.redirect,
     hasErrors: state.game.hasErrors,
+    games: state.game.games
 })  
 
 export default connect(mapStateToProps)(GameForm);

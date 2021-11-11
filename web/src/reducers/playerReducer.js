@@ -13,7 +13,7 @@ export default function playerReducer(state = initialState, action) {
     case actions.LOADINGP:
       return { ...state, loading: true }
     case actions.LOADEDP_SUCCESS:
-      return { ...state, players: action.payload, loading: false, hasErrors: false }
+      return { ...state, players: [...state.players, action.payload], loading: false, hasErrors: false }
     case actions.LOADEDP_FAILURE:
       return { ...state, loading: false, hasErrors: true } 
     default:

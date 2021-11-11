@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {  deleteGame, setGame } from '../actions/gameActions';
@@ -7,7 +7,7 @@ import '../styles/GamesTable.css'
 
 const GamesTable = ({dispatch,loading,hasErrors,games}) => {
 
-    const [totalPlayers, settotalPlayers] = useState(0)
+    
 
     const handleInciar = (index) => {
         dispatch(setGame(index));
@@ -15,16 +15,6 @@ const GamesTable = ({dispatch,loading,hasErrors,games}) => {
 
 
 
-    useEffect(() => {
-        var total = 0;
-        games.map((game) => {
-            total += parseInt(game.game.numPlayers);
-        })
-
-        settotalPlayers(total)
-    }, [dispatch,games])
-
-    console.log(totalPlayers)
 
 
     const renderGames = () => {
@@ -36,7 +26,7 @@ const GamesTable = ({dispatch,loading,hasErrors,games}) => {
 
         return games.map((game,index) => 
             <tr key={Math.random()}>
-                <td>{game.game.id}</td>
+                <td>{index}</td>
                 <td>{game.game.numPlayers}</td>
                 <td>{game.game.distance}</td>
                 <td> <button onClick={() => handleInciar(index)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
