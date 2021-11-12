@@ -21,8 +21,15 @@ export default function playerReducer(state = initialState, action) {
     case actions.DELETE_ITEMP:
         return {...state, players: state.players.filter((player) => player.player.game - 1 !== action.payload.index)} 
     case actions.UPDATE_ITEMP:
-        return {...state, players: state.players.map((player) => player.player.id === action.payload.data.id ? {player:{id:action.payload.data.id, name:action.payload.data.name,game:player.player.game }} : player)}
-
+        return {...state, players: state.players.map((player) => player.player.id === action.payload.data.id ? 
+            {player:{id:action.payload.data.id, name:action.payload.data.name, game:player.player.game,
+                horseColors:player.player.horseColors,distance:player.player.distance,country:player.player.country,place:player.player.place }} : player)}
+    case actions.DELETE_INDIVITUALITEMP:
+        return {...state, players: state.players.filter((player,index) => index !== action.payload.index)} 
+    case actions.UPDATE_COLORITEM:
+        return {...state, players: state.players.map((player) => player.player.id === action.payload.data.id ? 
+                {player:{id:action.payload.data.id, name:player.player.name, game:player.player.game,
+                    horseColors:action.payload.data.color,distance:player.player.distance,country:player.player.country,place:player.player.place }} : player)}
     default:    
       return state
   }

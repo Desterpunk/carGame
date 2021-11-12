@@ -3,7 +3,9 @@ export const LOADEDP_SUCCESS = 'LOADEDP_SUCCESS'
 export const LOADEDP_FAILURE = 'LOADEDP_FAILURE'
 export const SET_CURRENTPLAYER = 'SET_CURRENTPLAYER'
 export const DELETE_ITEMP = 'DELETE_ITEMP'
+export const DELETE_INDIVITUALITEMP = 'DELETE_INDIVITUALITEMP'
 export const UPDATE_ITEMP = 'UPDATE_ITEMP'
+export const UPDATE_COLORITEM = 'UPDATE_COLORITEM'
 
 export const loading = () => ({ type: LOADINGP })
 
@@ -29,6 +31,16 @@ export const updateItemPlayer = payload => ({
     payload
 });
 
+export const updateColorItem = payload => ({
+    type: UPDATE_COLORITEM,
+    payload
+});
+
+export const deleteIndividualItem = payload => ({
+    type: DELETE_INDIVITUALITEMP,
+    payload
+});
+
 
 export function createPlayer(data) {
     return async dispatch => {
@@ -51,4 +63,12 @@ export function updatePlayer(data) {
 
 export function setPlayer(index) {
     return async dispatch => {dispatch(setCurrentPlayer({index}))}
+}
+
+export function deleteIndividualPlayer(index) {
+    return async dispatch => {dispatch(deleteIndividualItem({index}))}
+}
+
+export function updateColorPlayer(data) {
+    return async dispatch => {dispatch(updateColorItem({data}))}
 }

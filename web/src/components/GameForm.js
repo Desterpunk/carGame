@@ -22,6 +22,10 @@ const GameForm = ({dispatch,games,players}) => {
                     id: players.length+i,
                     name: "username",
                     game: games.length+1,
+                    distance: distance,
+                    horseColors: "",
+                    country: "Canada",
+                    place: "Mountain"
                 }))
         }
 

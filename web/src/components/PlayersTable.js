@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import { setPlayer } from '../actions/playerActions';
+import { deleteIndividualPlayer, setPlayer } from '../actions/playerActions';
 
 import '../styles/GamesTable.css'
 import EditModal from './EditModal';
+import { SelectColor } from './SelectColor';
 
 const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPlayer}) => {
     const [openModal, setOpenModal] = useState(false)
     const [currentPlayers, setCurrentPlayers] = useState([])
+
 
     useEffect(() => {
         if(currentGame !== null){
@@ -23,6 +25,9 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPla
         setOpenModal(true);
     }
 
+    const handleDelete = (index) => {
+        dispatch(deleteIndividualPlayer(index))
+    }
     
 
     const renderPlayers = () => {
@@ -36,7 +41,9 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPla
                 <td>{player.player.id}</td>
                 <td>{player.player.name}</td>
                 <td>{player.player.game}</td>
-                <td><button className="ButtonDelete" onClick={() => {handleButton(player.player.id)}}>Nombrar</button></td>
+                <td><button className="ButtonRun" onClick={() => {handleButton(player.player.id)}}>Nombrar</button></td>
+                <td><button onClick={() => handleDelete(index)} className="ButtonDelete">Eliminar</button></td>
+                <td><SelectColor index={player.player.id} dispatch={dispatch}></SelectColor></td>
             </tr>
         )
         
@@ -57,6 +64,8 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPla
                         <td className="tittleTable">Nombre</td>
                         <td className="tittleTable">Juego</td>
                         <td className="tittleTable">Nombrar</td>
+                        <td className="tittleTable">Eliminar</td>
+                        <td className="tittleTable">Color</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +76,7 @@ const PlayersTable = ({dispatch,players,loading,hasErrors,currentGame,currentPla
                 
             </table>
 
-                <a href="/gamerunning" className="btn-link text-regular">Play</a>
+                <Link to="/gamerunning" className="btn-link text-regular" onClick={() => {}}>Play</Link>
             <br/>
 
             

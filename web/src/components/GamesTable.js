@@ -6,12 +6,13 @@ import { deletePlayer } from '../actions/playerActions';
 
 import '../styles/GamesTable.css'
 
-const GamesTable = ({dispatch,loading,hasErrors,games}) => {
+const GamesTable = ({dispatch,loading,hasErrors,games,players}) => {
 
     
+    
 
-    const handleInciar = (index) => {
-        dispatch(setGame(index));
+    const handleInciar = (game) => {
+        dispatch(setGame(game.game.id));
     }
 
 
@@ -31,9 +32,9 @@ const GamesTable = ({dispatch,loading,hasErrors,games}) => {
         return games.map((game,index) => 
             <tr key={Math.random()}>
                 <td>{game.game.id}</td>
-                <td>{game.game.numPlayers}</td>
+                <td>{players.length}</td>
                 <td>{game.game.distance}</td>
-                <td> <button onClick={() => handleInciar(game.game.id)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
+                <td> <button onClick={() => handleInciar(game)} className="ButtonRun"><Link to={"/players"}>Iniciar</Link></button> </td>
                 <td><button onClick={() => handleDelete(index)} className="ButtonDelete">Eliminar</button></td>
             </tr>
         )
@@ -68,6 +69,7 @@ const mapStateToProps = state => ({
     redirect: state.game.redirect,
     hasErrors: state.game.hasErrors,
     games: state.game.games,
+    players: state.player.players,
     currentGame: state.game.currentGame,
 })
 
