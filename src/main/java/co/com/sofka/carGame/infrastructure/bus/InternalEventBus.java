@@ -5,8 +5,10 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.infraestructure.bus.EventBus;
 import co.com.sofka.infraestructure.event.ErrorEvent;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+@ApplicationScoped
 public class InternalEventBus implements EventBus {
     @Inject
     private  MessageService messageService;

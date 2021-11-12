@@ -6,12 +6,15 @@ import co.com.sofka.infraestructure.repository.EventStoreRepository;
 import io.quarkus.runtime.Startup;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Default;
 
 @Startup
 @ApplicationScoped
 public class InstancesContext {
 
-    SubscriberEvent getSubscriberEvent(EventStoreRepository repository, EventBus eventBus)
+    @Default
+    public SubscriberEvent getSubscriberEvent(EventStoreRepository repository, EventBus eventBus)
     {
         return new SubscriberEvent(repository, eventBus);
     }

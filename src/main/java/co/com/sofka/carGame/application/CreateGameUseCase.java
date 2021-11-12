@@ -5,6 +5,7 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.carGame.domain.game.Game;
 import co.com.sofka.carGame.domain.game.commands.CreateGameCommand;
+import co.com.sofka.carGame.domain.game.events.GameCreated;
 import co.com.sofka.carGame.domain.game.values.GameId;
 
 import co.com.sofka.carGame.domain.horseman.Horseman;
@@ -40,9 +41,9 @@ public class CreateGameUseCase extends UseCase<RequestCommand<CreateGameCommand>
                 )
                 .map(domainEvents->
                 {
-                    events.addAll(domainEvents);
-                    var horsemanCreatedEvent = (HorsemanCreated)domainEvents.get(0);
-                    return horsemanCreatedEvent.getEntityId();
+                    var event = (HorsemanCreated)domainEvents.get(0);
+                    events.add(event);
+                    return event.getEntityId();
                 }).collect(Collectors.toList()));
 
        events.add(game.getUncommittedChanges().get(0));

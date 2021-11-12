@@ -1,10 +1,13 @@
 package co.com.sofka.carGame.infrastructure.bus;
 
 import co.com.sofka.carGame.domain.generic.Command;
+import co.com.sofka.carGame.domain.horseman.events.HorsemanCreated;
 import co.com.sofka.carGame.infrastructure.CommandSerializer;
 import co.com.sofka.carGame.infrastructure.EventSerializer;
 import co.com.sofka.domain.generic.DomainEvent;
 
+import co.com.sofka.infraestructure.repository.EventStoreRepository;
+import co.com.sofka.infraestructure.store.StoredEvent;
 import com.rabbitmq.client.*;
 import io.quarkiverse.rabbitmqclient.RabbitMQClient;
 import io.quarkus.runtime.StartupEvent;
@@ -16,6 +19,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
+
 @ApplicationScoped
 public class MessageService {
     private static final String EXCHANGE = "executor";
@@ -26,6 +30,7 @@ public class MessageService {
     private final RabbitMQClient rabbitMQClient;
 
     private Channel channel;
+
 
     public MessageService(EventBus bus, RabbitMQClient rabbitMQClient) {
         this.bus = bus;
@@ -52,13 +57,15 @@ public class MessageService {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 var message = new String(body, StandardCharsets.UTF_8);
+                    System.out.println("handle event");
                 try {
-                    var event = EventSerializer.instance()
-                            .deserialize(message, Class.forName(properties.getContentType()));
+                    var event = EventSerializer.instance().deserialize(message, Class.forName(properties.getContentType()));
                     bus.publish(event.type, event);
+
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
+
             }
         };
     }
@@ -94,8 +101,10 @@ public class MessageService {
 
     public void send(DomainEvent event) {
         try {
-            var message = EventSerializer.instance().serialize(event);
-            var props = new AMQP.BasicProperties.Builder().contentType(event.getClass().getTypeName()).build();
+            var storedEvent = StoredEvent.wrapEvent(event);
+            var message = storedEvent.getEventBody();
+            var props = new AMQP.BasicProperties.Builder().contentType(storedEvent.getTypeName())
+                    .timestamp(storedEvent.getOccurredOn()).build();
             channel.basicPublish(EXCHANGE, "trigger-event", props, message.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
